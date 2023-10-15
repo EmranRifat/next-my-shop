@@ -16,8 +16,8 @@ const productDetails = ({ item }) => {
     }
   };
   return (
-    <div>
-      <div className=" bg-[#EDF2FD]">
+    <div >
+      <div className=" bg-[#EDF2FD] max-w-full">
         <div className="md:flex justify-evenly  pt-10">
           <div className=" ">
             <img
@@ -227,8 +227,8 @@ export const getStaticProps = async (context) => {
 
 
 // // for layout connect
-// productDetails.getLayout = function getLayout(page) {
-//   return (
-//   <RootLayout>{ page }</RootLayout>
-//   )
-// };
+productDetails.getLayout = function getLayout(page) {
+  return (
+  <RootLayout>{ page }</RootLayout>
+  )
+};

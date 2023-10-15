@@ -13,11 +13,9 @@ export default function MyApp({ Component, pageProps }) {
   // redux provider
   return (
     <AuthProvider>
-    <Navbar/>
       <Provider store={store}>
         {getLayout(<Component {...pageProps} />)}
       </Provider>
-      <Footer/>
     </AuthProvider>
   );
 }
