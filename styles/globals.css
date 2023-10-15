@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.swiper-button-prev{
+    display: none !important;
+}
+.swiper-button-next{
+    display: none !important;
+}
+ .swiper-button-disabled{
+    display: none !important;
+}
