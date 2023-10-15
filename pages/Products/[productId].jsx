@@ -1,24 +1,24 @@
 import { Tab } from "@headlessui/react";
 import React, { Fragment, useState } from "react";
 import Review from "@/pages/Products/Review";
+import RootLayout from "../Layouts/RootLayout";
+
 const productDetails = ({ item }) => {
-  
   const [counter, setCounter] = useState(0);
-    
+
   const incrementCounter = () => {
-      setCounter(counter + 1);
+    setCounter(counter + 1);
   };
 
   const decrementCounter = () => {
-      if (counter !== 0) {
-          setCounter(counter - 1);
-      }
+    if (counter !== 0) {
+      setCounter(counter - 1);
     }
+  };
   return (
     <div>
       <div className=" bg-[#EDF2FD]">
         <div className="md:flex justify-evenly  pt-10">
-         
           <div className=" ">
             <img
               className="object-cover max-w-md border w-full h-auto  ml-32"
@@ -91,6 +91,11 @@ const productDetails = ({ item }) => {
               </svg>
               <p className="text-gray-500 pl-4 text-lg">({item.rating})</p>
             </div>
+            <div className="text-lg text-gray-600">
+              <p><span className="text-gray-400">Brand :</span> {item.brand}</p>
+              <p><span className="text-gray-400" >Category : </span>{item.category}</p>
+            </div>
+
             <div className="divider"></div>
             <div className="flex">
               {/* counter  */}
@@ -120,7 +125,6 @@ const productDetails = ({ item }) => {
                   />
                 </div>
               </div>
-              
 
               <button className="btn text-white  btn-info mr-2">
                 ADD TO CART
@@ -193,7 +197,11 @@ const productDetails = ({ item }) => {
   );
 };
 
+
 export default productDetails;
+
+
+
 
 export const getStaticPaths = async () => {
   const res = await fetch("http://localhost:5000/products");
@@ -216,3 +224,11 @@ export const getStaticProps = async (context) => {
     },
   };
 };
+
+
+// // for layout connect
+// productDetails.getLayout = function getLayout(page) {
+//   return (
+//   <RootLayout>{ page }</RootLayout>
+//   )
+// };
