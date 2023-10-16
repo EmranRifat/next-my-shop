@@ -10,16 +10,27 @@ import {
   updateProfile,
   FacebookAuthProvider
 } from "firebase/auth";
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useReducer, useState } from "react";
 import app from "../firebase/Firebase.config";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 const auth = getAuth(app);
 
+
 const AuthProvider = ({ children }) => {
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+
+
+
+//   const [state,dispatch]=useReducer(reducer,initialState);
+
+// console.log(state);
+
+
   const provider = new GoogleAuthProvider();
+
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -56,6 +67,10 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
+
+
+
+
   const authInfo = {
     user,
     loading,
@@ -66,6 +81,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     facebookLogin,
   };
+
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
