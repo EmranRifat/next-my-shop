@@ -2,8 +2,8 @@ import Link from "next/link";
 
 
 const Product = ({ product }) => {
-  const { title, price,rating,image, id } = product;
-  // console.log(product);
+  const { title, price,rating,image, _id } = product;
+  
 
 
 
@@ -12,14 +12,14 @@ const Product = ({ product }) => {
       <div className=" overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
         <div className="px-4 py-2">
           <h1 className="text-xl font-semibold text-gray-800  dark:text-white">
-            {title.slice(0,20)}
+            {title?.slice(0,20)}
           </h1>
         </div>
 
         <div className="flex items-center justify-center py-4 bg-[#EDF2FD]">
           <img
-            className=" object-cover	w-48 h-40  mt-2 "
-            src={product.images[0]}
+            className=" object-cover  w-48 h-40  mt-2 "
+            src={product?.images[0]}
             alt="NIKE AIR"
           />
         </div>
@@ -64,17 +64,17 @@ const Product = ({ product }) => {
         <div className="flex items-center justify-between px-4 py-2 bg-accent">
           <h1 className="text-lg font-bold text-white">$ {price}</h1>
 
-         <Link href={`/Products/${id}`}>
+         <Link href={`/Products/${_id}`}>
          <button className="btn btn-xs  btn-primary text-white" >
             Buy Now 
           </button>
          </Link>
-          <button
-           
-            className="btn btn-xs  btn-secondary text-white"
-          >
-           Add to Card
+         
+         <Link href="/Products/Cart">
+         <button className="btn btn-xs  btn-primary text-white" >
+           Add To Cart
           </button>
+         </Link>
          
         </div>
       </div>

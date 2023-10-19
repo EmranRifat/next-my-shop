@@ -1,31 +1,19 @@
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { paginate } from "../Utilities/Pagination";
 import PaginationControls from "../componants/PaginationControls";
+import { AuthContext } from "../providers/AuthProvider";
 
 const ProductPage = () => {
-  const DynamicProduct = dynamic(() => import("./Product"), {
-    loading: () => <h1 className="text-center">Loading...</h1>,
-    ssr: false,
-  });
-
-  const [isLoading, setLoading] = useState(true);
+  const { data12, loading } = useContext(AuthContext);
   const pageSize = 12;
   const [currentPage, setCurrentPage] = useState(1);
   const [posts, setPosts] = useState([]);
 
-  // const {data,isError,error}=useGetProductsQuery();
-  // console.log(posts);
-
-  useEffect(() => {
-    fetch("http://localhost:5000/products")
-      .then((res) => res.json())
-      .then((data) => {
-        setPosts(data);
-        // setPosts(data.data);
-        setLoading(false);
-      });
-  }, []);
+  const DynamicProduct = dynamic(() => import("./Product"), {
+    loading: () => <h1 className="text-center">Loading...</h1>,
+    ssr: false,
+  });
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -33,10 +21,16 @@ const ProductPage = () => {
 
   const paginatedPosts = paginate(posts, currentPage, pageSize);
 
+  useEffect(() => {
+    if (!loading) {
+      setPosts(data12.data);
+    }
+  }, [loading]);
+
   return (
     <div>
       <div>
-        {isLoading ? (
+        {loading ? (
           <div>Loading...</div>
         ) : (
           <div className="container mx-auto grid lg:grid-cols-4 md:grid-cols-2 gap-4 ">

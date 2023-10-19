@@ -82,7 +82,6 @@ const DashboardLayout = ({ children }) => {
                 minHeight: 360,
                 background: colorBgContainer,
                 minHeight: "100vh",
-
               }}
             >
               {children}

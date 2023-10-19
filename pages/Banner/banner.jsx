@@ -28,60 +28,55 @@ import RoundCard from "../componants/RoundCard";
 import RightSideBar from "../componants/RightSideBar";
 
 const categories = [
-  
   {
     id: "02",
     name: "Health & Beauty",
-    icon:<MdHealthAndSafety></MdHealthAndSafety>
+    icon: <MdHealthAndSafety></MdHealthAndSafety>,
   },
   {
     id: "03",
     name: "Men's & Boy's Fashion",
-    icon:<IoIosPersonAdd></IoIosPersonAdd>
+    icon: <IoIosPersonAdd></IoIosPersonAdd>,
   },
   {
     id: "04",
     name: "Electronic Device",
-    icon:<FcSmartphoneTablet></FcSmartphoneTablet>
-
+    icon: <FcSmartphoneTablet></FcSmartphoneTablet>,
   },
   {
     id: "05",
     name: "Sports & Outdoor",
-    icon:<FcSportsMode></FcSportsMode>
-
-
+    icon: <FcSportsMode></FcSportsMode>,
   },
   {
     id: "06",
     name: "Home & Lifestyle",
-    icon:<FcHome></FcHome>
-
+    icon: <FcHome></FcHome>,
   },
   {
     id: "07",
     name: "Groceries",
-    icon:<BsFillCartCheckFill></BsFillCartCheckFill>
+    icon: <BsFillCartCheckFill></BsFillCartCheckFill>,
   },
   {
     id: "08",
     name: "Girl's Fashion ",
-    icon:<IoMdShirt></IoMdShirt>
+    icon: <IoMdShirt></IoMdShirt>,
   },
   {
     id: "09",
     name: "Vehicle & Accessories",
-    icon:<AiTwotoneCar></AiTwotoneCar>
+    icon: <AiTwotoneCar></AiTwotoneCar>,
   },
   {
     id: "10",
     name: "Kids Fashion",
-    icon:<LuBaby></LuBaby>
+    icon: <LuBaby></LuBaby>,
   },
   {
     id: "01",
     name: "All Categories",
-    icon:<BiCategory></BiCategory>
+    icon: <BiCategory></BiCategory>,
   },
 ];
 
@@ -117,12 +112,16 @@ const Banner = () => {
                   <MdKeyboardDoubleArrowRight className="text-2xl mr-5 mt-1 text-gray-500"></MdKeyboardDoubleArrowRight>
                 </div>
 
-                {categories.map((category ) => {
-                  return <li key={category.id}>
-                  <a   className="font-semibold text-base	"> {category?.icon} {category?.name}</a>
-                  </li>
+                {categories.map((category) => {
+                  return (
+                    <li key={category.id}>
+                      <a className="font-semibold text-base	">
+                        {" "}
+                        {category?.icon} {category?.name}
+                      </a>
+                    </li>
+                  );
                 })}
-               
               </ul>
             </div>
           </div>

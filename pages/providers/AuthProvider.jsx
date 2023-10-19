@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -8,7 +7,7 @@ import {
   signInWithPopup,
   signOut,
   updateProfile,
-  FacebookAuthProvider
+  FacebookAuthProvider,
 } from "firebase/auth";
 import { createContext, useEffect, useReducer, useState } from "react";
 import app from "../firebase/Firebase.config";
@@ -16,21 +15,37 @@ import app from "../firebase/Firebase.config";
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
-
 const AuthProvider = ({ children }) => {
+
+
+
+    // const [state,dispatch]=useReducer(productReducer,initialState);
+
+
+
+
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [data12, setData12] = useState([]);
 
 
+  useEffect(() => {
+    const dataFunction = async () => {
+      const res = await fetch("/api/server");
+      const data = await res.json();
+      // console.log(28,data)
+      setData12(data);
+      setLoading(false);
+    };
 
-//   const [state,dispatch]=useReducer(reducer,initialState);
+    dataFunction();
+  }, []);
 
-// console.log(state);
 
+  // console.log(state);
 
   const provider = new GoogleAuthProvider();
-
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -60,18 +75,15 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log("current user ", currentUser);
+      // console.log("current user ", currentUser);
     });
     return () => {
       return unsubscribe();
     };
   }, []);
 
-
-
-
-
   const authInfo = {
+    data12,
     user,
     loading,
     createUser,

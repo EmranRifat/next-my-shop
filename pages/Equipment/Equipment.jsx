@@ -12,8 +12,6 @@ const Equipment = () => {
         <Deal></Deal>
         <PersonalEquipment></PersonalEquipment>
         <Arrival></Arrival>
-
-        
       </div>
     </div>
   );

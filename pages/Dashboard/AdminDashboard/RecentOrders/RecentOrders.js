@@ -11,31 +11,31 @@ const RecentOrders = () => {
       </div>
       {/* table part */}
       <div className="overflow-x-auto mt-10">
-  <table className="table">
-    {/* head */}
-    <thead>
-      <tr>
-        <th>Item</th>
-        <th>Product Id</th>
-        <th>Price</th>
-        <th>STATUS</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {/* row 1 */}
-      <tr>
-       <th>Apple MacBook Pro 17"</th>
-       <th>#XY-25G</th>
-       <th>$2999.00</th>
-       <th>Active</th>
-       <th><button>View</button></th>
-      </tr>
-    </tbody>
-  
-    
-  </table>
-</div>
+        <table className="table">
+          {/* head */}
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Product Id</th>
+              <th>Price</th>
+              <th>STATUS</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* row 1 */}
+            <tr>
+              <th>Apple MacBook Pro 17"</th>
+              <th>#XY-25G</th>
+              <th>$2999.00</th>
+              <th>Active</th>
+              <th>
+                <button>View</button>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

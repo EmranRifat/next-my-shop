@@ -112,15 +112,20 @@ const UserProfile = () => {
                 <AiOutlineMail /> <span className="pl-2">Message</span>
               </span>
             </label>
-            <textarea className="textarea textarea-bordered textarea-lg w-full "
-            type="text"
-            {...register("message", { required: true })}
-            name="message"
-            placeholder="Message"
+            <textarea
+              className="textarea textarea-bordered textarea-lg w-full "
+              type="text"
+              {...register("message", { required: true })}
+              name="message"
+              placeholder="Message"
             ></textarea>
           </div>
         </div>
-        <input className="mt-16 mx-auto border-2 px-10 py-2 text-lg md:text-xl font-bold bg-blue-500 hover:bg-blue-800 text-white" type="submit"  value={"Update Profile"}/>
+        <input
+          className="mt-16 mx-auto border-2 px-10 py-2 text-lg md:text-xl font-bold bg-blue-500 hover:bg-blue-800 text-white"
+          type="submit"
+          value={"Update Profile"}
+        />
       </form>
     </div>
   );

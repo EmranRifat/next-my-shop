@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const ImageUploadForm = () => {
   const [selectedImages, setSelectedImages] = useState([]);
@@ -19,11 +19,11 @@ const ImageUploadForm = () => {
 
     const promises = selectedImages.map(async (file) => {
       const formData = new FormData();
-      formData.append('image', file);
+      formData.append("image", file);
 
       try {
         const response = await fetch(imgHostingURL, {
-          method: 'POST',
+          method: "POST",
           body: formData,
         });
 
@@ -31,10 +31,10 @@ const ImageUploadForm = () => {
           const result = await response.json();
           uploadedImageUrls.push(result.data.url);
         } else {
-          console.error('Image upload failed.');
+          console.error("Image upload failed.");
         }
       } catch (error) {
-        console.error('Error uploading image:', error);
+        console.error("Error uploading image:", error);
       }
     });
 
@@ -43,21 +43,26 @@ const ImageUploadForm = () => {
     setUploading(false);
 
     // Log the uploaded image URLs array to the console
-    console.log('Uploaded Image URLs:', uploadedImageUrls);
+    console.log("Uploaded Image URLs:", uploadedImageUrls);
   };
 
   return (
     <div>
-      <form className='flex  items-center gap-10'>
+      <form className="flex  items-center gap-10">
         <input
           type="file"
           accept="image/*"
           multiple
           onChange={handleImageChange}
-          className='border-2 py-3 pl-5 pr-10'
+          className="border-2 py-3 pl-5 pr-10"
         />
-        <button type="button" onClick={uploadImages} disabled={uploading} className='bg-blue-700 text-white px-3 py-2 text-end '>
-          {uploading ? 'Uploading...' : 'Upload Images'}
+        <button
+          type="button"
+          onClick={uploadImages}
+          disabled={uploading}
+          className="bg-blue-700 text-white px-3 py-2 text-end "
+        >
+          {uploading ? "Uploading..." : "Upload Images"}
         </button>
       </form>
       <div className="image-preview flex gap-6 my-5 ">

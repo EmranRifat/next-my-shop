@@ -60,8 +60,8 @@ const AdminDashboard = () => {
       </div>
       <div>
         <div className="flex items-center gap-20">
-            <SalesStatics />
-            <MostSellingCategory />
+          <SalesStatics />
+          <MostSellingCategory />
         </div>
       </div>
       <div className="flex flex-wrap">

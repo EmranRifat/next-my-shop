@@ -22,7 +22,9 @@ const DashboardLayout = () => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isUser, setIsUser] = useState(true);
 
-  const [content, setContent] = useState(isAdmin ? <AdminDashboard /> : <UserDashboard />);
+  const [content, setContent] = useState(
+    isAdmin ? <AdminDashboard /> : <UserDashboard />
+  );
 
   // Handle the admin menu item click
   const handleMenuClick = (key) => {
@@ -31,19 +33,15 @@ const DashboardLayout = () => {
       setContent(isAdmin ? <AdminDashboard /> : <UserDashboard />);
     } else if (key === "2") {
       // Display Option 1 content
-      setContent( isAdmin? <Option1Content /> : <UserProfile />);
+      setContent(isAdmin ? <Option1Content /> : <UserProfile />);
     } else if (key === "3") {
       // Display All Users content
-      setContent(isAdmin? <AllUsers /> : <SellProducts />);
-    }
-    else if (key === "4") {
+      setContent(isAdmin ? <AllUsers /> : <SellProducts />);
+    } else if (key === "4") {
       // Display All Users content
-      setContent(isAdmin? <AddProducts /> : <MyOrder />);
+      setContent(isAdmin ? <AddProducts /> : <MyOrder />);
     }
-    
   };
-
- 
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
@@ -51,7 +49,10 @@ const DashboardLayout = () => {
         <div className="logo" />
 
         <div className="text-center">
-          <Avatar className="w-12 h-12 md:w-20 md:h-20 mt-5" src={user?.photoURL} />
+          <Avatar
+            className="w-12 h-12 md:w-20 md:h-20 mt-5"
+            src={user?.photoURL}
+          />
           <h1 className="my-2 text-lg mb-6 text-white">{user?.displayName}</h1>
         </div>
 
@@ -86,31 +87,28 @@ const DashboardLayout = () => {
               </p>
             </Menu.Item>
             <Menu.Item key="2" onClick={() => handleMenuClick("2")}>
-            <p className="flex items-center">
+              <p className="flex items-center">
                 <span className="text-2xl">
                   <FaUserLarge />
                 </span>
                 <span className="pl-5">Profile</span>
               </p>
-              
             </Menu.Item>
             <Menu.Item key="3" onClick={() => handleMenuClick("3")}>
-            <p className="flex items-center">
+              <p className="flex items-center">
                 <span className="text-2xl">
                   <GiSellCard />
                 </span>
                 <span className="pl-5">Sell Products</span>
               </p>
-              
             </Menu.Item>
             <Menu.Item key="" onClick={() => handleMenuClick("4")}>
-            <p className="flex items-center">
+              <p className="flex items-center">
                 <span className="text-2xl">
                   <FaTableList />
                 </span>
                 <span className="pl-5">My Orders</span>
               </p>
-              
             </Menu.Item>
           </Menu>
         )}

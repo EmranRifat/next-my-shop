@@ -23,17 +23,14 @@ const index = () => {
     formState: { errors },
   } = useForm();
 
-
   let imgURL;
 
   //imagebb upload image and get image url
   const img_hosting_token = "d73659ce7a4d4dee84b0a167ca4d6f40";
   const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`;
- 
 
   const onSubmit = async (data) => {
-
-    // here upload the image in imagebb and get url for this image 
+    // here upload the image in imagebb and get url for this image
     const formData = new FormData();
     formData.append("image", data.image[0]);
     fetch(img_hosting_url, {
@@ -46,7 +43,6 @@ const index = () => {
           imgURL = imgResponse.data.display_url;
         }
       });
-
 
     setError("");
 
@@ -65,16 +61,13 @@ const index = () => {
           phoneNumber: data.phoneNumber,
         };
 
-        const response = await fetch(
-          `api/userAccountCreate`,
-          {
-            method: "POST",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(saveUser),
-          }
-        );
+        const response = await fetch(`api/userAccountCreate`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(saveUser),
+        });
 
         const responseData = await response.json();
         if (responseData.data.acknowledged) {

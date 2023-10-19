@@ -10,6 +10,7 @@
     "json-server": "json-server --watch Products.json --port 5000"
   },
   "dependencies": {
+    "@ant-design/icons": "^5.2.6",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@headlessui/react": "^1.7.17",

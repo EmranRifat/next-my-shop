@@ -1,9 +1,11 @@
 import Link from "next/link";
 import React, { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { ShoppingCartOutlined} from '@ant-design/icons';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  
   return (
     <div>
       <div className="navbar bg-base-100 border shadow-lg py-4">
@@ -73,11 +75,11 @@ const Navbar = () => {
           </div>
 
           <ul className="menu  menu-horizontal px-1 text-lg ">
-            <li>
+            {/* <li>
               <Link href="/">About</Link>
-            </li>
+            </li> */}
             <li>
-              <Link href="/">Cart</Link>
+              <Link  href="/Products/Cart"><ShoppingCartOutlined  className="text-2xl px-5"/></Link>
             </li>
             <li>
               <Link href="/">Order</Link>

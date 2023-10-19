@@ -13,7 +13,11 @@ const SocialMedia = () => {
     try {
       const result = await googleLogin();
       const user = result.user;
-      const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
+      const saveUser = {
+        name: user.displayName,
+        email: user.email,
+        image: user.photoURL,
+      };
 
       // Send user data to your server for further processing
       await fetch(`api/userAccountCreate`, {
@@ -31,7 +35,7 @@ const SocialMedia = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      router.push('/');
+      router.push("/");
     } catch (error) {
       console.log("Google error message:", error.message);
     }
@@ -52,14 +56,20 @@ const SocialMedia = () => {
     <div className="mt-5 px-8">
       <div className="w-full text-center mb-4 flex items-center justify-center gap-3 md:gap-6">
         <div>
-          <button onClick={handleGoogleLogin} className="rounded-full text-center">
+          <button
+            onClick={handleGoogleLogin}
+            className="rounded-full text-center"
+          >
             <span className="text-4xl md:text-5xl">
               <FcGoogle className="border-2 rounded-full border-green-500 hover:bg-sky-200 px-1"></FcGoogle>
             </span>
           </button>
         </div>
         <div>
-          <button onClick={handleFacebookLogin} className="rounded-full text-center">
+          <button
+            onClick={handleFacebookLogin}
+            className="rounded-full text-center"
+          >
             <span className="text-4xl md:text-5xl">
               <FaFacebook className="text-sky-600 border-2 rounded-full border-green-500 hover:bg-sky-200 px-1"></FaFacebook>
             </span>

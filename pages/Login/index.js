@@ -21,7 +21,7 @@ const index = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data)
+    console.log(data);
     setError("");
     try {
       const current = await signIn(data.email, data.password);

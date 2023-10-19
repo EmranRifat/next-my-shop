@@ -10,10 +10,9 @@ const RoundCard = () => {
     <div>
       <div className="row-span-1 col-span-4 bg-white rounded-lg order-3 mt-2 py-4">
         <div className="flex flex-wrap justify-between items-center px-5">
-         
           <div>
             <Image
-             className="mx-auto bg-gray-300 p-2 rounded-full"
+              className="mx-auto bg-gray-300 p-2 rounded-full"
               src={clock}
               alt=""
               height={"100"}
@@ -21,9 +20,9 @@ const RoundCard = () => {
             <p className="text-sm mt-3">Clock & Accessories</p>
           </div>
 
-          <div >
+          <div>
             <Image
-             className="mx-auto bg-gray-300 p-2 rounded-full"
+              className="mx-auto bg-gray-300 p-2 rounded-full"
               src={phone}
               alt=""
               height={"100"}
@@ -32,7 +31,7 @@ const RoundCard = () => {
           </div>
           <div>
             <Image
-            className="mx-auto bg-gray-300 p-2 rounded-full"
+              className="mx-auto bg-gray-300 p-2 rounded-full"
               src={cloth}
               alt=""
               height={"100"}
@@ -41,11 +40,10 @@ const RoundCard = () => {
           </div>
           <div className="  ">
             <Image
-            className="mx-auto bg-gray-300 p-2 rounded-full"
-             
+              className="mx-auto bg-gray-300 p-2 rounded-full"
               src={cape}
               alt=""
-              height={'100'}
+              height={"100"}
             />
             <p className="text-sm mt-3">Cape & Accessories</p>
           </div>

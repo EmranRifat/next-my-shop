@@ -23,8 +23,13 @@ const SalesStatics = () => {
 
   return (
     <div className="bg-white mt-10 p-6">
-        <h1 className="text-3xl font-bold mb-5">Sales Statics</h1>
-      <LineChart className="snap-x w-full " width={600} height={300} data={data}>
+      <h1 className="text-3xl font-bold mb-5">Sales Statics</h1>
+      <LineChart
+        className="snap-x w-full "
+        width={600}
+        height={300}
+        data={data}
+      >
         <XAxis dataKey="name" />
         <YAxis />
         <CartesianGrid stroke="#ccc" />

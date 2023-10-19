@@ -1,9 +1,10 @@
+import { Fragment, useState } from "react";
 import { Tab } from "@headlessui/react";
-import React, { Fragment, useState } from "react";
 import Review from "@/pages/Products/Review";
 import RootLayout from "../Layouts/RootLayout";
+import Link from "next/link";
 
-const productDetails = ({ item }) => {
+const ProductDetails = ({ item }) => {
   const [counter, setCounter] = useState(0);
 
   const incrementCounter = () => {
@@ -15,31 +16,32 @@ const productDetails = ({ item }) => {
       setCounter(counter - 1);
     }
   };
+
   return (
-    <div >
-      <div className=" bg-[#EDF2FD] max-w-full">
-        <div className="md:flex justify-evenly  pt-10">
-          <div className=" ">
+    <div>
+      <div className="bg-[#EDF2FD]">
+        <div className="md:flex justify-evenly pt-10">
+          <div className="">
             <img
-              className="object-cover max-w-md border w-full h-auto  ml-32"
+              className="object-cover max-w-md border w-full h-auto ml-32"
               src={item.images[0]}
               alt=""
             />
             <div className="md:flex gap-4">
               <img
-                className="object-fill border-2 w-32 max-h-32  mt-4 ml-40"
+                className="object-fill border-2 w-32 max-h-32 mt-4 ml-40"
                 src={item.images[1]}
                 alt=""
               />
               <img
-                className="object-fill border-2 w-32 max-h-32  mt-4 "
+                className="object-fill border-2 w-32 max-h-32 mt-4"
                 src={item.images[2]}
                 alt=""
               />
             </div>
           </div>
 
-          <div className="space-y-3 ">
+          <div className="space-y-3">
             <p className="text-gray-500">Product id: {item.id}</p>
             <h2 className="text-3xl font-semibold">
               {item?.title.slice(0, 30)}
@@ -54,7 +56,7 @@ const productDetails = ({ item }) => {
             </div>
             <p>{item?.description.slice(0, 100)}</p>
 
-            <div className="flex my-2 item-center ">
+            <div className="flex my-2 item-center">
               <svg
                 className="w-7 h-7 text-orange-500 fill-current dark:text-gray-300"
                 viewBox="0 0 24 24"
@@ -92,28 +94,32 @@ const productDetails = ({ item }) => {
               <p className="text-gray-500 pl-4 text-lg">({item.rating})</p>
             </div>
             <div className="text-lg text-gray-600">
-              <p><span className="text-gray-400">Brand :</span> {item.brand}</p>
-              <p><span className="text-gray-400" >Category : </span>{item.category}</p>
+              <p>
+                <span className="text-gray-400">Brand :</span> {item.brand}
+              </p>
+              <p>
+                <span className="text-gray-400">Category : </span>
+                {item.category}
+              </p>
             </div>
 
             <div className="divider"></div>
             <div className="flex">
-              {/* counter  */}
               <div>
-                <div className="btn-group pr-4 ">
+                <div className="btn-group pr-4">
                   <input
                     onClick={decrementCounter}
                     type="radio"
                     name="options"
                     data-title="-"
-                    className="btn border border-slate-400  text-2xl "
+                    className="btn border border-slate-400  text-2xl"
                   />
 
                   <input
                     type="radio"
                     name="options"
                     data-title={counter}
-                    className="btn border border-slate-400	 text-xl "
+                    className="btn border border-slate-400 text-xl"
                   />
 
                   <input
@@ -121,30 +127,30 @@ const productDetails = ({ item }) => {
                     type="radio"
                     name="options"
                     data-title="+"
-                    className="btn  border border-slate-400	 text-2xl"
+                    className="btn border border-slate-400 text-2xl"
                   />
                 </div>
               </div>
 
-              <button className="btn text-white  btn-info mr-2">
-                ADD TO CART
-              </button>
-              <button className="btn text-white btn-info">BUY NOW</button>
+              <Link href={`/Products/${item._id}`}>
+                <button className="btn text-white btn-info mr-2">
+                  BUY NOW
+                </button>
+              </Link>
+              <button className="btn text-white btn-info">ADD TO CART</button>
             </div>
           </div>
         </div>
 
-        {/* description  */}
-
-        <div className="ml-40 py-44  overflow-y-auto   mx-auto  ">
+        <div className="ml-40 py-44 overflow-y-auto mx-auto">
           <Tab.Group>
             <Tab.List>
-              <div className="space-x-4 text-2xl font-semibold ">
+              <div className="space-x-4 text-2xl font-semibold">
                 <Tab as={Fragment}>
                   {({ selected }) => (
                     <button
                       className={
-                        selected ? "text-blue-700 underline " : "text-gray-700"
+                        selected ? "text-blue-700 underline" : "text-gray-700"
                       }
                     >
                       DESCRIPTION
@@ -156,7 +162,7 @@ const productDetails = ({ item }) => {
                   {({ selected }) => (
                     <button
                       className={
-                        selected ? " text-blue-700 underline " : "text-gray-700"
+                        selected ? "text-blue-700 underline" : "text-gray-700"
                       }
                     >
                       REVIEWS (1)
@@ -181,13 +187,13 @@ const productDetails = ({ item }) => {
                     assumenda qui! Dicta nemo architecto obcaecati ad quo ipsam
                     vel porro, error aspernatur quae, inventore ducimus id esse
                     quod beatae voluptates ab cumque omnis illum! Fugit aut
-                    obcaecati illo labore culpa quod error neque sed nam, animi,
+                    obcaecati ille labore culpa quod error neque sed nam, animi,
                     dolorem ullam eaque hic nemo?
                   </p>
                 </div>
               </Tab.Panel>
               <Tab.Panel>
-                <Review></Review>
+                <Review />
               </Tab.Panel>
             </Tab.Panels>
           </Tab.Group>
@@ -197,38 +203,34 @@ const productDetails = ({ item }) => {
   );
 };
 
-
-export default productDetails;
-
-
-
+export default ProductDetails;
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/products");
-  const items = await res.json();
-
-  const paths = items.map((data) => ({
-    params: { productId: data.id },
+  const res = await fetch("http://localhost:3000/api/server");
+  if (!res.ok) {
+    throw new Error("Network response was not ok");
+  }
+  const data = await res.json();
+  const paths = data.data.map((data) => ({
+    params: { productId: data._id },
   }));
   return { paths, fallback: false };
 };
 
 export const getStaticProps = async (context) => {
   const { params } = context;
-  const res = await fetch(`http://localhost:5000/products/${params.productId}`);
+  console.log(params);
+  const res = await fetch(
+    `http://localhost:3000/api/server?id=${params.productId}`
+  );
   const data = await res.json();
-  console.log(data);
   return {
     props: {
-      item: data,
+      item: data.data,
     },
   };
 };
 
-
-// // for layout connect
-productDetails.getLayout = function getLayout(page) {
-  return (
-  <RootLayout>{ page }</RootLayout>
-  )
+ProductDetails.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
 };

@@ -13,14 +13,10 @@ const SingleProduct = () => {
           </div>
         </div>
       </td>
-      <td>
-        Product Name
-      </td>
+      <td>Product Name</td>
       <td>Product Price</td>
       <th>01</th>
-      <th>
-        Order Data -02/02/02
-      </th>
+      <th>Order Data -02/02/02</th>
       <th>Product Information ....</th>
       <th>Product Review</th>
     </tr>
