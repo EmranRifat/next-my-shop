@@ -1,11 +1,14 @@
 import Link from "next/link";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
+import { actionTypes } from "../states/productState/ActionTypes";
+
 
 
 const Product = ({ product }) => {
   const { title, price,rating,image, _id } = product;
-  
 
-
+  const{dispatch}=useContext(AuthContext);
 
   return (
     <div>
@@ -70,11 +73,11 @@ const Product = ({ product }) => {
           </button>
          </Link>
          
-         <Link href="/Products/Cart">
-         <button className="btn btn-xs  btn-primary text-white" >
+         
+         <button onClick={()=>dispatch({type:actionTypes.ADD_TO_CARD, payload:product})} className="btn btn-xs  btn-primary text-white" >
            Add To Cart
           </button>
-         </Link>
+   
          
         </div>
       </div>

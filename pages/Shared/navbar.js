@@ -1,11 +1,12 @@
 import Link from "next/link";
 import React, { useContext } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-import { ShoppingCartOutlined} from '@ant-design/icons';
+import { ShoppingCartOutlined } from "@ant-design/icons";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
-  
+  const { user, logOut, state: {cart}} = useContext(AuthContext);
+  console.log(cart);
+
   return (
     <div>
       <div className="navbar bg-base-100 border shadow-lg py-4">
@@ -78,9 +79,17 @@ const Navbar = () => {
             {/* <li>
               <Link href="/">About</Link>
             </li> */}
-            <li>
-              <Link  href="/Products/Cart"><ShoppingCartOutlined  className="text-2xl px-5"/></Link>
-            </li>
+
+
+            <div className="indicator relative">
+              <span className="indicator-item badge badge-secondary absolute top-1 right-2">{cart.length}</span>
+              <li>
+                <Link href="/Products/Cart">
+                  <ShoppingCartOutlined className="text-2xl ml-3 " />
+                </Link>
+              </li>
+            </div>
+
             <li>
               <Link href="/">Order</Link>
             </li>

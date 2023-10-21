@@ -1,8 +1,9 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Tab } from "@headlessui/react";
 import Review from "@/pages/Products/Review";
 import RootLayout from "../Layouts/RootLayout";
 import Link from "next/link";
+import { AuthContext } from "../providers/AuthProvider";
 
 const ProductDetails = ({ item }) => {
   const [counter, setCounter] = useState(0);
@@ -16,6 +17,8 @@ const ProductDetails = ({ item }) => {
       setCounter(counter - 1);
     }
   };
+
+  const { dispatch } = useContext(AuthContext);
 
   return (
     <div>
@@ -131,13 +134,14 @@ const ProductDetails = ({ item }) => {
                   />
                 </div>
               </div>
-
               <Link href={`/Products/${item._id}`}>
                 <button className="btn text-white btn-info mr-2">
                   BUY NOW
                 </button>
               </Link>
-              <button className="btn text-white btn-info">ADD TO CART</button>
+              <Link href="/Products/Cart">
+                <button  className="btn text-white btn-info">ADD TO CART</button>
+              </Link>{" "}
             </div>
           </div>
         </div>
@@ -230,7 +234,7 @@ export const getStaticProps = async (context) => {
     },
   };
 };
-
+// useCommonLayout
 ProductDetails.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };

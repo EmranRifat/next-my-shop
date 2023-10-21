@@ -38,3 +38,4 @@ const initialState = {
 
 
 export default  CartProvider;
+CartContext.js

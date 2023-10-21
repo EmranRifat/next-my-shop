@@ -1,12 +1,17 @@
 import { actionTypes } from "./ActionTypes";
 
+
 export const initialState = {
   loading: false,
   error: false,
   products: [],
+  cart:[]
 };
 
+
+
 export const productReducer = (state, action) => {
+  
   switch (action.type) {
     case actionTypes.FETCHING_START:
       return {
@@ -25,8 +30,13 @@ export const productReducer = (state, action) => {
       return {
         ...state,
         loading: false,
-        products: action.payload,
         error: true,
+      };
+      
+    case actionTypes.ADD_TO_CARD:
+      return {
+        ...state,
+       cart:[...state.cart,action.payload],
       };
   }
 };
