@@ -5,8 +5,7 @@ import SingleAddCart from "./SingleAddCart";
 
 const cart = () => {
   const {
-    state: { cart, error, loading },
-  } = useContext(AuthContext);
+    state: { cart, error, loading }} = useContext(AuthContext);
   // const scart=cart[0];
   // console.log(scart);
 
@@ -27,6 +26,7 @@ const cart = () => {
             <tr className=" ml-20">
               <th>Image</th>
               <th>Name</th>
+              <th>Quantity</th>
               <th>Price</th>
               <th>Action</th>
             </tr>

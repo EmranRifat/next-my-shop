@@ -28,7 +28,7 @@ const SingleAddCart = ({ scart }) => {
         <button className="btn btn-accent btn-xs">Delete</button>
       </th>
     </tr>
-
+ 
     // <div className="container mx-auto  ">
     //   {/* row 1 */}
     //   <tr>
